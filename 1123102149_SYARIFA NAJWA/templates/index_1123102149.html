@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Buku</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Daftar Buku</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Kode Buku</th>
+            <th>Nama Buku</th>
+            <th>Penerbit</th>
+            <th>Pengarang</th>
+            <th>Jumlah Buku</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for buku in buku %}
+          <tr>
+            <td>{{ buku[0] }}</td>
+            <td>{{ buku[1] }}</td>
+            <td>{{ buku[2] }}</td>
+            <td>{{ buku[3] }}</td>
+            <td>{{ buku[4] }}</td>
+            <td>
+              <a href="/edit/{{ buku[0] }}" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="/tambah" class="btn btn-primary">Tambah Buku</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C89scichPDQ1zf0yPKEgLs006ZvL/QrgwmJQhxCn0i8KMJXcCt1zLPGer+P9Qj6hJ" crossorigin="anonymous"></script>
+  </body>
+</html>
