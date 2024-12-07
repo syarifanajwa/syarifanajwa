@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h3 class="text-center text-muted mb-3">Tambah Data Siswa</h3>
+<form action="" method="POST" class="form">
+    <div class="mb-3">
+        <label for="nama" class="form-label">Nama</label>
+        <input type="text" name="nama" id="nama" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" id="email" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Tambah</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Kembali</a>
+</form>
+{% endblock %}
