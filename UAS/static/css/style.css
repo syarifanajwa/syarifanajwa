@@ -1,0 +1,172 @@
+/* Menjadikan navbar sticky */
+nav.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 9999; /* Agar navbar tetap di atas konten lain */
+  width: 100%;
+  background-color: #fff; /* Sesuaikan dengan warna latar belakang navbar */
+}
+
+/* Menambahkan sedikit bayangan pada navbar untuk memberi efek elevasi */
+nav.navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+  background: url("https://dryftlive.com/wp-content/uploads/2023/07/the-art-of-long-term-car-rental-the-pros-and-cons-dryftlive.jpg") no-repeat center center/cover;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Warna hitam transparan */
+  z-index: 1;
+}
+
+.hero h1,
+.hero p,
+.btn-get-started {
+  position: relative;
+  z-index: 2; /* Letakkan di atas overlay */
+}
+
+
+.btn-get-started {
+  margin-top: 20px;
+}
+
+.about {
+  background: url('https://www.transparenttextures.com/patterns/gray-spiral.png');
+  background-color: #f8f9fa; /* Kombinasi pola dengan warna dasar */
+  padding: 100px 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+
+.about .content h3 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 20px; /* Mengurangi margin agar lebih proporsional */
+  padding-top: 80px; /* Mengurangi padding */
+  text-align: center; /* Menjadikan teks berada di tengah */
+}
+
+.about .content p {
+  margin-bottom: 20px; /* Mengurangi margin bawah */
+  line-height: 1.8; /* Menambahkan spasi antar baris */
+  text-align: justify; /* Membuat teks lebih rapi dengan justify */
+}
+
+.about .content .about-btn {
+  padding: 10px 30px;
+  color: var(--accent-color);
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--accent-color);
+  margin-top: 20px; /* Menambah jarak dengan konten atas */
+}
+
+.about .content .about-btn i {
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.about .content .about-btn:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.about .icon-box {
+  text-align: center; /* Menyesuaikan konten agar rata tengah */
+  margin-bottom: 30px; /* Memberikan jarak antar box */
+}
+
+.about .icon-box i {
+  font-size: 40px;
+  color: var(--accent-color);
+  margin-bottom: 15px; /* Memberikan jarak antara ikon dan teks */
+}
+
+.about .icon-box h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--heading-color);
+}
+
+.about .icon-box h4 a {
+  color: var(--heading-color);
+  transition: color 0.3s ease;
+}
+
+.about .icon-box p {
+  font-size: 15px;
+  color: var(--default-color);
+  line-height: 1.6; /* Menambah spasi antar baris untuk keterbacaan */
+  margin-bottom: 0;
+}
+
+.about .icon-box:hover h4 a {
+  color: var(--accent-color);
+}
+
+/* Card List Section */
+.car-list {
+  margin-top: 100px;
+  padding: 50px;
+}
+
+.car-list .card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.car-list .btn-primary {
+  background-color: #000;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* About Us Section */
+#about {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+  margin-top: 100px;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: #f8f9fa;
+}

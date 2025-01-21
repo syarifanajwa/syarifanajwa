@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental Service</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <!--Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Car Rental</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cars">CARS</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="/admin" class="btn btn-secondary">Admin Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Discover the world on wheels</h1>
+      <p>Mitra perjalanan pilihan utama di Indonesia dengan layanan rental mobil yang berkualitas dan terpercaya</p>
+      <a href="#cars" class="btn btn-primary btn-get-started">Get Started</a>
+    </div>
+
+    <section id="about" class="about section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>
+          <span>Learn More</span> <span class="description-title">About Us<br /></span>
+        </p>
+      </div>
+      <div class="container">
+        <div class="row gy-5">
+          <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
+            <h3>NF Car Rental</h3>
+            <p>
+              "Kami adalah penyedia layanan rental mobil terpercaya yang telah melayani kebutuhan transportasi pelanggan sejak [tahun berdiri]. Dengan armada kendaraan yang lengkap, kami berkomitmen untuk memberikan pengalaman berkendara
+              yang nyaman, aman, dan terjangkau bagi setiap pelanggan."
+            </p>
+          </div>
+
+          <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-car-front-fill"></i>
+                <h4><a href="" class="stretched-link">Pilihan Kendaraan Lengkap</a></h4>
+                <p>Mulai dari mobil keluarga, sedan mewah, hingga SUV untuk segala kebutuhan perjalanan Anda.</p>
+              </div>
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+                <h4><a href="" class="stretched-link">Perawatan Terjamin</a></h4>
+                <p>Semua kendaraan kami dirawat secara rutin untuk menjamin keamanan dan kenyamanan Anda.</p>
+              </div>
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-coin"></i>
+                <h4><a href="" class="stretched-link">Harga Transparan</a></h4>
+                <p>Tidak ada biaya tersembunyi, semua harga jelas dan kompetitif.</p>
+              </div>
+              <div class="col-md-6 icon-box position-relative">
+                <i class="bi bi-clock-fill"></i>
+                <h4><a href="" class="stretched-link">Pelayanan Pelanggan 24/7</a></h4>
+                <p>Siap membantu Anda kapan saja.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#007bff"
+          fill-opacity="1"
+          d="M0,192L48,208C96,224,192,256,288,240C384,224,480,160,576,128C672,96,768,96,864,122.7C960,149,1056,203,1152,208C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+
+    <!-- Card List Section -->
+    <section class="car-list py-5" id="cars">
+      <div class="container">
+        <h2 class="section-title text-center mb-4">Our Cars</h2>
+        <div class="row g-4">
+          {% for car in cars %}
+          <div class="col-md-4">
+            <div class="card">
+              {% if car.foto %}
+              <img src="{{ url_for('static', filename='uploads/' + car['foto']) }}" alt="Car Image" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover" />
+              {% else %}
+              <img src="{{ url_for('static', filename='img/car_placeholder.jpg') }}" alt="Default Car Image" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover" />
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ car.nama }}</h5>
+                <p class="card-text">Rp {{ car.harga_perhari }} / hari</p>
+                <div class="d-flex justify-content-between text-muted">
+                  <span>Stok: {{ car.stok }}</span>
+                  <span>Kecepatan: {{ car.kecepatan }} km/jam</span>
+                </div>
+                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#carModal{{ car['_id'] }}">Lihat Detail</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="carModal{{ car['_id'] }}" tabindex="-1" aria-labelledby="carModalLabel{{ car['_id'] }}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="carModalLabel{{ car['_id'] }}">{{ car.nama }}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>Harga per hari:</strong> Rp {{ car.harga_perhari }}</p>
+                  <p><strong>Kecepatan:</strong> {{ car.kecepatan }} km/h</p>
+                  <p><strong>Stok:</strong> {{ car.stok }} unit</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p>&copy; 2025 Car Rental Service | Find us on <a href="https://www.example.com" target="_blank" class="text-white">our website</a>.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
